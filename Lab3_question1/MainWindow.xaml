@@ -1,0 +1,56 @@
+﻿<Window x:Class="Lab3_question1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab3_question1"
+        mc:Ignorable="d"
+        Title="Silvana Gjini" Height="450" Width="800">
+    <Window.Resources>
+        <local:ElectronicsList x:Key="ElectronicsListData"/>
+        <local:JewelryList x:Key="JewelryListData"/>
+        <local:BooksList x:Key="BooksListData"/>
+        <local:ToysList x:Key="ToysListData"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="677*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Store Invoice Calculator" HorizontalAlignment="Left" Margin="214,71,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" Grid.Column="1"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="113,107,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="109,107,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1"/>
+        <Label Content="Electronics:" HorizontalAlignment="Left" Margin="106,134,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Books:" HorizontalAlignment="Left" Margin="7,164,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Jewelry:" HorizontalAlignment="Left" Margin="1,198,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Toys:" HorizontalAlignment="Left" Margin="16,235,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ComboBox x:Name="cmbElectronics" HorizontalAlignment="Left" Margin="67,137,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1" ItemsSource="{Binding Source={StaticResource ElectronicsListData}}" DisplayMemberPath="Item" SelectedValue="Price" SelectionChanged="cmbElectronics_SelectionChanged" />
+        <ComboBox x:Name="cmbBooks" HorizontalAlignment="Left" Margin="67,168,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1" ItemsSource="{Binding Source={StaticResource BooksListData}}" DisplayMemberPath="Item" SelectedValue="Item" SelectionChanged="cmbBooks_SelectionChanged"/>
+        <ComboBox x:Name="cmbJewelry" HorizontalAlignment="Left" Margin="67,202,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1" ItemsSource="{Binding Source={StaticResource JewelryListData}}" DisplayMemberPath="Item" SelectedValue="Item" SelectionChanged="cmbJewelry_SelectionChanged"/>
+        <ComboBox x:Name="cmbToys" HorizontalAlignment="Left" Margin="67,237,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1" ItemsSource="{Binding Source={StaticResource ToysListData}}" DisplayMemberPath="Item" SelectedValue="Item" SelectionChanged="cmbToys_SelectionChanged"/>
+
+        <Button Content="Clear Bill" HorizontalAlignment="Left" Margin="270,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.683,0.386" Width="64" Grid.Column="1" Click="Button_Click"/>
+        <Label Content="HST (18%):" HorizontalAlignment="Left" Margin="385,299,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Total:" HorizontalAlignment="Left" Margin="411,358,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1"/>
+        <Label x:Name="lblTax" Content="0" HorizontalAlignment="Left" Margin="484,300,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblTotal" Content="0" HorizontalAlignment="Left" Margin="484,359,0,0" VerticalAlignment="Top" Grid.Column="1" Cursor=""/>
+        <StatusBar Margin="0,0,0,368" Grid.ColumnSpan="2">
+
+                <Hyperlink NavigateUri="https://www.centennialcollege.ca/"
+
+                  TextDecorations="None">
+
+                <Image Width="127" Height="48" Source="/Resources/CentennialCollege.jpg" />
+
+            </Hyperlink>
+        
+            
+
+            <StatusBarItem FontStyle="Italic" FontSize="16" Width="354" Height="28" VerticalAlignment="Top" Margin="0,15,0,0">Silvana Gjini - 301201477</StatusBarItem>
+        </StatusBar>
+        <ListBox x:Name="listItems" Grid.Column="1"  Margin="277,117,117,155"/>
+        <Label Grid.Column="1" Content="Subtotal:" HorizontalAlignment="Left" Margin="395,332,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSubtotal" Grid.Column="1" Content="0" HorizontalAlignment="Left" Margin="484,331,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.726,0.452"/>
+
+    </Grid>
+</Window>
